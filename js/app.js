@@ -36,17 +36,46 @@ as a user i want to see visual actions for wrong choices. i.e
 
  /*-------------------------------- Constants --------------------------------*/
 
-/*
+
 let gameBoard ;
 
-const correctWord; make array
+const footballTeams = [
+    "Manchester United",
+    "Liverpool",
+    "Chelsea",
+    "Arsenal",
+    "Manchester City",
+    "Tottenham Hotspur",
+    "Leicester City",
+    "Everton",
+    "West Ham United",
+    "Aston Villa",
+    "Newcastle United",
+    "Wolverhampton Wanderers",
+    "Leeds United",
+    "Southampton",
+    "Crystal Palace",
+    "Brighton & Hove Albion",
+    "Burnley",
+    "Fulham",
+    "Sheffield United",
+    "West Bromwich Albion"
+];
+   
+   
+
+
+//const correctWord; ['',]  array
 
 
 /*-------------------------------- Variables --------------------------------*/
+
+let wordChoice = []
+
+let selectedWord 
+
+let getPlayerGuess
 /*
-let wordChoice = ['orange', 'apple']
-let selectedWord = math.floor...
-let selectedLetter = [] to save letters
  
 let win = false;
 let scoreBoard = 0;
@@ -63,20 +92,46 @@ let maxGuesses = 5
 const selectedWords
 const randomWord
 const buttonElement =
-const guessedLetters =
-const scoreBoard=
 
-const keyPadBtn =
-const restartbtn
+const scoreBoard =
+*/
+const keyPadBtn = document.querySelectorAll('#keyPadBtn')
+console.log(keyPadBtn)
+
+const restartbtn = document.getElementById('restart')
+
+const lettersContainers = document.getElementById('letters')
 
 
 
 /*-------------------------------- Functions --------------------------------*/
+
+
+
+function init()  {
+   selectedWord =  footballTeams[Math.floor(Math.random() * footballTeams.length)]
+   getPlayerGuess = []
+   lettersContainers.innerHTML = ''
+   for (let i = 0; i < 26 ; i++ ){
+    const letter = document.createElement('div')
+    letter.classList.add('letter')
+    console.log(letter)
+   }
+
+
+
+console.log(selectedWord)
+listenLetterClick()
+  }
+
+init()
+
+function listenLetterClick(e) {
+
+}
+
+
 /*
-const randomWord = () => {
-math.floor and math.random to get word choice from array
-
-
 }
 
 const getPlayerGuess () {
@@ -94,10 +149,12 @@ if statments
 
 const checkWin = () => {
 see if players choices = random word
+if(wordChoice === randomWord)
 }
    
 const checkLoss = () => {
 check if maxguesses have been used  
+if()
 }
 
 
@@ -129,11 +186,10 @@ const hintBtn = () => {
 
 
 
-const init =() => {
 
-}
 
 const resetGame = () => {
+
     } 
 
    const endGame = () => {
@@ -145,15 +201,18 @@ render()
 
 
 /*----------------------------- Event Listeners -----------------------------*/
- /*
-buttonElement.forEach(keyPadBtn => {
-  keyPadBtn.addEventListener('click','resetGame')*/
+
+
+  restartbtn.addEventListener('click', init)
+  letters
+  
+  
   
 
-  //create Array
+  //create Arrays
 
   //diplay buttons
-  //check if word chossen includes a letter that wwas picked
+  //check if word chossen includes a letter that was picked
   //if it happens i want something to happen
   //if not something else.
   
