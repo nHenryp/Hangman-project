@@ -74,10 +74,12 @@ let wordChoice = []
 
 let selectedWord 
 
-let getPlayerGuess
-/*
+let playerGuess
+
+//let selectedWordIdx = 0;
  
 let win = false;
+/*
 let scoreBoard = 0;
 
 let maxGuesses = 5
@@ -96,13 +98,13 @@ const buttonElement =
 const scoreBoard =
 */
 const keyPadBtn = document.querySelectorAll('#keyPadBtn')
-console.log(keyPadBtn)
+//console.log(keyPadBtn)
 
 const restartbtn = document.getElementById('restart')
 
 const lettersContainers = document.getElementById('letters')
 
-
+//const display = document.
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -110,48 +112,101 @@ const lettersContainers = document.getElementById('letters')
 
 function init()  {
    selectedWord =  footballTeams[Math.floor(Math.random() * footballTeams.length)]
-   getPlayerGuess = []
+   playerGuess = []
    lettersContainers.innerHTML = ''
    for (let i = 0; i < 26 ; i++ ){
     const letter = document.createElement('div')
     letter.classList.add('letter')
-    console.log(letter)
+    letter.textContent = String.fromCharCode(65 + i)
+    letter.addEventListener('click', listenLetterClick)
+    lettersContainers.appendChild(letter)
+    
    }
 
 
 
-console.log(selectedWord)
-listenLetterClick()
+//console.log(selectedWord)
+
   }
 
 init()
 
 function listenLetterClick(e) {
+  const letter = e.target;
+  const text = letter.textContent.toLowerCase()
+  letter.removeEventListener('click', listenLetterClick)
+  if (selectedWord.includes(text)) {
+    playerGuess.push(text)
+    console.log('correct')
+  } else {
+    console.log('incorrect')
+  }
+
+  
+  //console.log(text)
 
 }
+function updateWordDisplay() {
 
+  let lettersArray = [];
+  for (let i = 0; i < selectedWord.length; i++) {
+       const letter = selectedWord.slice(i,i + 1);
+       lettersArray.push(letter);
+  }       
+  
+  let joinedLetters = lettersArray.join('');
+  document.getElementById('display').textContent = joinedLetters;
+  console.log(joinedLetters)
+ 
+}  
+updateWordDisplay()
+//innerhtml
+//create varible = selectedword
+//breakwork into letter
+//map the word
+//includes() that letter
+//join()
+//display.textContent = 
+
+ 
+
+
+ function checkGameStatus() {
+  
+}
+
+
+
+function disableAllLetters() {
+  const letters = document.querySelectorAll('.letter')
+  letters.forEach(letter => letter.removeEventListener('click', listenLetterClick))
+}
+
+
+
+
+
+//const getPlayerGuess () {
+  //if ()
+
+//get player letter choices
+
+//if statments
+
+
+
+//}
 
 /*
-}
-
-const getPlayerGuess () {
-get player letter choices
-
-if statments
-
-
-
-}
-
-
 
 
 
 const checkWin = () => {
-see if players choices = random word
-if(wordChoice === randomWord)
+  if(playerGuess === )
+
+console.log()
 }
-   
+  
 const checkLoss = () => {
 check if maxguesses have been used  
 if()
@@ -163,12 +218,12 @@ update players score, + points for correct guesses
 
 
 
-
-
-
 const checkLetter = () =>{
    if guess === randomWord move to next round
 }
+
+
+
 
 const displayResult = () => {
 display win or lose on the screen
@@ -204,7 +259,7 @@ render()
 
 
   restartbtn.addEventListener('click', init)
-  letters
+  
   
   
   
