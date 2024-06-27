@@ -31,7 +31,7 @@ const footballTeams = [
     "Leeds United",
     "Southampton",
     "Crystal Palace",
-    "Brighton & Hove Albion",
+    "Brighton hove and albion",
     "Burnley",
     "Fulham",
     "Sheffield United",
@@ -50,13 +50,14 @@ let wordChoice = []
 
 let selectedWord 
 
-let playerGuess =[]
+let playerGuess = []
 
 let incorrectGuesses 
 
-const maxGuesses = 6;
+let maxGuesses = 6;
 
 
+let displayWord = []
 
 
 /*
@@ -86,6 +87,9 @@ const lettersContainers = document.getElementById('letters')
 
 const display = document.getElementById('display')
 
+const guesses = document.getElementById('guesses')
+
+const guessCount = document.getElementById('max-guesses')
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -94,7 +98,13 @@ const display = document.getElementById('display')
 function init()  {
    selectedWord =  footballTeams[Math.floor(Math.random() * footballTeams.length)].toLowerCase()
    playerGuess = []
+   display.textContent = ''
+   guesses.textContent = ''
+   guessCount.textContent = ''
+   //console.log(playerGuess)
    lettersContainers.innerHTML = ''
+  
+   //console.log(typeof displayWord
    for (let i = 0; i < 26 ; i++ ){
     const letter = document.createElement('div')
     letter.classList.add('letter')
@@ -102,11 +112,15 @@ function init()  {
     letter.addEventListener('click', listenLetterClick)
     lettersContainers.appendChild(letter)
     
+ 
+
+    //console.log(letter)
    }
+   
+   console.log(displayWord)
 
 
 
-console.log(selectedWord)
 
   }
 
@@ -131,8 +145,14 @@ function listenLetterClick(e) {
 
  if (isCorrectGuess) {
   console.log('correct'); 
+  guesses.textContent = 'correct'
  } else {
+  maxGuesses-- 
+  guessCount.textContent = `You have ${maxGuesses} Guesses`
+  console.log(maxGuesses)
   console.log('incorrect')
+  guesses.textContent = 'wrong'
+
  }
 
  updateWordDisplay()
@@ -142,11 +162,11 @@ function listenLetterClick(e) {
 
 }
 function updateWordDisplay() {
-  let displayWord = selectedWord.split('').map(letter =>           //
-    playerGuess.includes(letter) ? letter : '_' ).join('');
+  displayWord = selectedWord.split('').map(letter =>           //
+    playerGuess.includes(letter) || letter === ' ' ? letter : '_' ).join('');
     display.textContent = displayWord
     
-
+console.log(display)
   
 
  
@@ -162,7 +182,7 @@ function updateWordDisplay() {
 
  
 
-
+/*
  function checkGameStatus() {
   
    if (!display.textContent.includes('_')) {
@@ -171,19 +191,23 @@ function updateWordDisplay() {
    disableAllLetters();
 
   }
-
+*/
 function checkWin() {
 
   const guessedWord = selectedWord.split('').map(letter =>
-    playerGuess.includes(letter) ? letter : '_').join('')
+    playerGuess.includes(letter) || letter === ' ' ? letter : '_').join('')
   
   if (guessedWord === selectedWord) {
-    console.log('you Win')
-    //display.textContent = 'You win';
-
+     guesses.textContent = 'Congrats you won'
     disableAllLetters()
-    
+
+  } else if ( maxGuesses === 0) {
+     guesses.textContent = 'Game Over'
+    disableAllLetters()
   }
+  
+
+  
 
 
 
