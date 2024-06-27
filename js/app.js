@@ -136,17 +136,9 @@ function listenLetterClick(e) {
  }
 
  updateWordDisplay()
+ checkWin()
  
  
- /* if (selectedWord.includes(text)) {
-    playerGuess.push(text)
-    console.log('correct')
-  } else {
-    console.log('incorrect')
-  }
-
- */ 
-  //console.log(text)
 
 }
 function updateWordDisplay() {
@@ -187,7 +179,7 @@ function checkWin() {
   
   if (guessedWord === selectedWord) {
     console.log('you Win')
-    display.textContent = 'You win';
+    //display.textContent = 'You win';
 
     disableAllLetters()
     
