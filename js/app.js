@@ -1,23 +1,3 @@
-/*-------------------------------- Constants --------------------------------*/
-
-
-
-/*---------------------------- Variables (state) ----------------------------*/
-
-
-
-/*------------------------ Cached Element References ------------------------*/
-
-
-
-/*-------------------------------- Functions --------------------------------*/
-
-
-
-/*----------------------------- Event Listeners -----------------------------*/
-
-
-
 /*as a user i want to be able to see an updated score as i play along
 as a user i want to see visual actions for wrong choices. i.e 
   the parts of Hangman.
@@ -28,11 +8,7 @@ as a user i want to see visual actions for wrong choices. i.e
  a clear message sould be displayed when winning a round of the game
  a reset button should be available 
  and hint button should be present if user needs assistance.
-
-
 */
-
-
 
  /*-------------------------------- Constants --------------------------------*/
 
@@ -65,7 +41,7 @@ const footballTeams = [
    
 
 
-//const correctWord; ['',]  array
+
 
 
 /*-------------------------------- Variables --------------------------------*/
@@ -74,15 +50,19 @@ let wordChoice = []
 
 let selectedWord 
 
-let playerGuess
+let playerGuess =[]
 
-//let selectedWordIdx = 0;
- 
-let win = false;
+let incorrectGuesses 
+
+const maxGuesses = 6;
+
+
+
+
 /*
 let scoreBoard = 0;
 
-let maxGuesses = 5
+
 
 
 
@@ -96,22 +76,23 @@ const randomWord
 const buttonElement =
 
 const scoreBoard =
-*/
+*///console.log(keyPadBtn)//const display = document.
 const keyPadBtn = document.querySelectorAll('#keyPadBtn')
-//console.log(keyPadBtn)
+
 
 const restartbtn = document.getElementById('restart')
 
 const lettersContainers = document.getElementById('letters')
 
-//const display = document.
+const display = document.getElementById('display')
+
 
 /*-------------------------------- Functions --------------------------------*/
 
 
 
 function init()  {
-   selectedWord =  footballTeams[Math.floor(Math.random() * footballTeams.length)]
+   selectedWord =  footballTeams[Math.floor(Math.random() * footballTeams.length)].toLowerCase()
    playerGuess = []
    lettersContainers.innerHTML = ''
    for (let i = 0; i < 26 ; i++ ){
@@ -125,7 +106,7 @@ function init()  {
 
 
 
-//console.log(selectedWord)
+console.log(selectedWord)
 
   }
 
@@ -135,31 +116,50 @@ function listenLetterClick(e) {
   const letter = e.target;
   const text = letter.textContent.toLowerCase()
   letter.removeEventListener('click', listenLetterClick)
-  if (selectedWord.includes(text)) {
+ 
+ let isCorrectGuess = false;
+
+ for (let i = 0; i < selectedWord.length; i++) {
+  if (selectedWord[i] === text) {
+    if (!playerGuess.includes(text)) {    //reveals all the ties of a guess letter
+      playerGuess.push(text);
+    }
+    isCorrectGuess = true;
+  }
+
+ }
+
+ if (isCorrectGuess) {
+  console.log('correct'); 
+ } else {
+  console.log('incorrect')
+ }
+
+ updateWordDisplay()
+ 
+ 
+ /* if (selectedWord.includes(text)) {
     playerGuess.push(text)
     console.log('correct')
   } else {
     console.log('incorrect')
   }
 
-  
+ */ 
   //console.log(text)
 
 }
 function updateWordDisplay() {
+  let displayWord = selectedWord.split('').map(letter =>           //
+    playerGuess.includes(letter) ? letter : '_' ).join('');
+    display.textContent = displayWord
+    
 
-  let lettersArray = [];
-  for (let i = 0; i < selectedWord.length; i++) {
-       const letter = selectedWord.slice(i,i + 1);
-       lettersArray.push(letter);
-  }       
   
-  let joinedLetters = lettersArray.join('');
-  document.getElementById('display').textContent = joinedLetters;
-  console.log(joinedLetters)
+
  
 }  
-updateWordDisplay()
+//updateWordDisplay()
 //innerhtml
 //create varible = selectedword
 //breakwork into letter
@@ -173,7 +173,33 @@ updateWordDisplay()
 
  function checkGameStatus() {
   
-}
+   if (!display.textContent.includes('_')) {
+    console.log('you win')
+   }
+   disableAllLetters();
+
+  }
+
+function checkWin() {
+
+  const guessedWord = selectedWord.split('').map(letter =>
+    playerGuess.includes(letter) ? letter : '_').join('')
+  
+  if (guessedWord === selectedWord) {
+    console.log('you Win')
+    display.textContent = 'You win';
+
+    disableAllLetters()
+    
+  }
+
+
+
+  
+
+  
+}  
+
 
 
 
@@ -193,36 +219,13 @@ function disableAllLetters() {
 
 //if statments
 
-
-
 //}
 
 /*
 
 
-
-const checkWin = () => {
-  if(playerGuess === )
-
-console.log()
-}
-  
-const checkLoss = () => {
-check if maxguesses have been used  
-if()
-}
-
-
 const updateGame() =>
 update players score, + points for correct guesses
-
-
-
-const checkLetter = () =>{
-   if guess === randomWord move to next round
-}
-
-
 
 
 const displayResult = () => {
@@ -239,17 +242,6 @@ const hintBtn = () => {
 
 }
 
-
-
-
-
-const resetGame = () => {
-
-    } 
-
-   const endGame = () => {
-    
-    }
 
 
 render()
