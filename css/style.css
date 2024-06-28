@@ -19,13 +19,16 @@ body {
 }
 
 #game-board {
-  background-color: aqua;
+  background-image: url(../hangmans-img/game-background.jpg);
+  background-position: center;
+  background-size: cover;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 600px;
   width: 100%;
   text-align: center;
+
 }
 
 #game-screen {
@@ -46,6 +49,7 @@ body {
 #guesses {
   font-size: 18px;
   margin-bottom: 10px;
+  color: white;
 }
 
 #max-guesses {
@@ -67,11 +71,13 @@ body {
 .letter {
   padding: 3px;
   margin: 2px;
+  height: 20px;
+  width: 20px;
   border: 1px solid #000;
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
-  font-size: 8px;
+  font-size: 12px;
   font-weight: bold;
   flex: 1 0 30%;
   background-color: #f0f0f0;

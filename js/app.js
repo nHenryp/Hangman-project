@@ -62,12 +62,12 @@ let displayWord = []
 
 /*
 
-*/
+
 /*------------------------ Cached Element References ------------------------*/
 
-/*
 
-*/
+
+
 
 const keyPadBtn = document.querySelectorAll('#keyPadBtn')
 
@@ -81,6 +81,9 @@ const display = document.getElementById('display')
 const guesses = document.getElementById('guesses')
 
 const guessCount = document.getElementById('max-guesses')
+
+const audio = document.querySelector('#audio')
+
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -177,19 +180,10 @@ function checkWin() {
 
   } else if ( incorrectGuesses === maxGuesses) {
      guesses.textContent = 'Game Over'
+     playAudio()
     disableAllLetters()
   }
-  
-
-  
-
-
-
-  
-
-  
 }  
-
 
 
 
@@ -204,35 +198,13 @@ function disableAllLetters() {
 
 
 /*
-
-
-const updateGame() =>
-update players score, + points for correct guesses
-
-
-const displayResult = () => {
-display win or lose on the screen
-}
- 
-
-
-
-
-
-
-const hintBtn = () => {
-
-}
-
-
-
 render()
 
 
 /*----------------------------- Event Listeners -----------------------------*/
 
 
-  restartbtn.addEventListener('click', init)
+  restartbtn.addEventListener('click', init, playAudio)
   
   
   
