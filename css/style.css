@@ -2,105 +2,94 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-    
-    
-   
+
+
+
 }
 
 body {
-  background-color: rgb(190, 63, 63, );
+
+  background-color: #f4f4f4;
   margin: 0;
-  height: 100vh;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  height: 100vh;
 }
-
-
-
-
-
 
 #game-board {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
+  background-color: aqua;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
   width: 100%;
-  height: 100%;
-  border: 7px solid #000;
-  margin: 4px;
-  border-radius: 31px;
-  
-
- 
- 
-  
-
+  text-align: center;
 }
-  
+
 #game-screen {
-  
-  background-size: cover;
-    background-position: center;
-    width: 800px;
-    height: 600px;
-    outline: rgba(238, 232, 232, 0.5);
-    border-radius: 25px;
-    border-width: 5px;
-    border-color: aqua;
-    display: flex;
-    justify-content: flex-end;
-    flex-wrap: nowrap;
-    align-items: stretch;
-    
-    flex-direction: column;
-  
-  
+  margin-bottom: 20px;
+
 }
-    
-#key-container{
+
+#display {
+  height: 100px;
+  background-color: #9f8c8c;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#guesses {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#max-guesses {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#letters {
+  margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: baseline;
-  margin-top: 10px;
-  max-width: 50%;
-  align-self: baseline;
- 
+  max-width: 100px;
+  margin: 20px auto;
+  gap: 5px;
+  justify-content: center;
+
 }
-    
-  #keyPadBtn {
-    background-color: beige;
-    width: 30px;
-    margin: 3px;
-    height: 30px;
-    outline: whitesmoke;
-    border: 1px;
-    border-radius: 11px;
-    }  
 
-  #letters {
-    border: solid black;
-    display: inline-flex;
-    height: 9vh;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 7px;
-  }
-    
-  #extra {
-    display: flex;
-    align-self: flex-end;
-    justify-content: space-between;
-  }
+.letter {
+  padding: 3px;
+  margin: 2px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 8px;
+  font-weight: bold;
+  flex: 1 0 30%;
+  background-color: #f0f0f0;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s;
+}
 
+#extra {
+  display: flex;
+  justify-content: space-between;
+}
 
-
-
-    
-    
-    
+#restart {
+  background-color: #bd1a1a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}

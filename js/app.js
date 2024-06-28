@@ -10,7 +10,7 @@ as a user i want to see visual actions for wrong choices. i.e
  and hint button should be present if user needs assistance.
 */
 
- /*-------------------------------- Constants --------------------------------*/
+ 
 
 
 let gameBoard ;
@@ -61,23 +61,14 @@ let displayWord = []
 
 
 /*
-let scoreBoard = 0;
-
-
-
-
-
 
 */
 /*------------------------ Cached Element References ------------------------*/
 
 /*
-const selectedWords
-const randomWord
-const buttonElement =
 
-const scoreBoard =
-*///console.log(keyPadBtn)//const display = document.
+*/
+
 const keyPadBtn = document.querySelectorAll('#keyPadBtn')
 
 
@@ -98,13 +89,15 @@ const guessCount = document.getElementById('max-guesses')
 function init()  {
    selectedWord =  footballTeams[Math.floor(Math.random() * footballTeams.length)].toLowerCase()
    playerGuess = []
+   incorrectGuesses = 0;
+   displayWord = ''
    display.textContent = ''
    guesses.textContent = ''
-   guessCount.textContent = ''
+   guessCount.textContent = `you have ${maxGuesses} guesses left`
    //console.log(playerGuess)
    lettersContainers.innerHTML = ''
   
-   //console.log(typeof displayWord
+   
    for (let i = 0; i < 26 ; i++ ){
     const letter = document.createElement('div')
     letter.classList.add('letter')
@@ -114,7 +107,7 @@ function init()  {
     
  
 
-    //console.log(letter)
+    console.log(selectedWord)
    }
    
    console.log(displayWord)
@@ -147,8 +140,8 @@ function listenLetterClick(e) {
   console.log('correct'); 
   guesses.textContent = 'correct'
  } else {
-  maxGuesses-- 
-  guessCount.textContent = `You have ${maxGuesses} Guesses`
+  incorrectGuesses++
+  guessCount.textContent = `You have ${maxGuesses - incorrectGuesses} guesses left`
   console.log(maxGuesses)
   console.log('incorrect')
   guesses.textContent = 'wrong'
@@ -171,27 +164,8 @@ console.log(display)
 
  
 }  
-//updateWordDisplay()
-//innerhtml
-//create varible = selectedword
-//breakwork into letter
-//map the word
-//includes() that letter
-//join()
-//display.textContent = 
 
- 
 
-/*
- function checkGameStatus() {
-  
-   if (!display.textContent.includes('_')) {
-    console.log('you win')
-   }
-   disableAllLetters();
-
-  }
-*/
 function checkWin() {
 
   const guessedWord = selectedWord.split('').map(letter =>
@@ -201,7 +175,7 @@ function checkWin() {
      guesses.textContent = 'Congrats you won'
     disableAllLetters()
 
-  } else if ( maxGuesses === 0) {
+  } else if ( incorrectGuesses === maxGuesses) {
      guesses.textContent = 'Game Over'
     disableAllLetters()
   }
@@ -228,14 +202,6 @@ function disableAllLetters() {
 
 
 
-//const getPlayerGuess () {
-  //if ()
-
-//get player letter choices
-
-//if statments
-
-//}
 
 /*
 
@@ -249,9 +215,9 @@ display win or lose on the screen
 }
  
 
-const scoreBoard = () => {
 
- }
+
+
 
 
 const hintBtn = () => {
