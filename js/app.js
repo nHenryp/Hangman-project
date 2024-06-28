@@ -179,11 +179,22 @@ function checkWin() {
     disableAllLetters()
 
   } else if ( incorrectGuesses === maxGuesses) {
+   
      guesses.textContent = 'Game Over'
-     playAudio()
+     
     disableAllLetters()
   }
 }  
+
+
+
+
+
+  
+
+  
+  
+
 
 
 
@@ -204,7 +215,7 @@ render()
 /*----------------------------- Event Listeners -----------------------------*/
 
 
-  restartbtn.addEventListener('click', init, playAudio)
+  restartbtn.addEventListener('click', init,)
   
   
   
