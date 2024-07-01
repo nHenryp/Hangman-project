@@ -7,7 +7,7 @@ as a user i want to see visual actions for wrong choices. i.e
  i want the game to randomize the word choices.
  a clear message sould be displayed when winning a round of the game
  a reset button should be available 
- and hint button should be present if user needs assistance.
+ 
 */
 
  
@@ -82,7 +82,7 @@ const guesses = document.getElementById('guesses')
 
 const guessCount = document.getElementById('max-guesses')
 
-const audio = document.querySelector('#audio')
+
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -208,8 +208,7 @@ function disableAllLetters() {
 
 
 
-/*
-render()
+
 
 
 /*----------------------------- Event Listeners -----------------------------*/
